@@ -13,7 +13,7 @@ const TABS = [
       <div className="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
         <p>
           I&apos;m a <span className="font-semibold text-indigo-600 dark:text-indigo-400">final-year B.Tech CS student</span> at
-          DYPCET, Kolhapur with a CGPA of <span className="font-semibold text-slate-800 dark:text-slate-200">8.5</span>, passionate
+          DYPCET, Kolhapur with a CGPA of <span className="font-semibold text-slate-800 dark:text-slate-200">8.3</span>, passionate
           about building production-grade, AI-integrated backend systems.
         </p>
         <p>

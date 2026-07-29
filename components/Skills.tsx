@@ -15,13 +15,12 @@ const SKILL_CATEGORIES = [
       "Spring AI",
       "Spring Security (JWT)",
       "Spring WebSocket",
-      "Spring Cloud Gateway",
       "Spring Data JPA / Hibernate",
     ],
   },
   {
     category: "Frontend",
-    skills: ["HTML5", "CSS3", "Vanilla JS", "Leaflet.js", "Chart.js", "SockJS", "STOMP.js"],
+    skills: ["HTML5", "CSS3", "Vanilla JS"],
   },
   {
     category: "Databases & Cache",
@@ -35,18 +34,15 @@ const SKILL_CATEGORIES = [
     category: "Architecture & AI",
     skills: [
       "Apache Kafka (KRaft)",
-      "Event-Driven Architecture",
       "REST APIs",
       "WebSocket / STOMP",
       "Google Gemini AI (Multimodal)",
-      "Spring AI",
       "pgvector Embeddings",
-      "System Design",
     ],
   },
   {
     category: "Core Concepts",
-    skills: ["OOP", "SOLID Principles", "Design Patterns", "DSA", "Unit Testing (JUnit 5 + Mockito)"],
+    skills: ["OOP", "SOLID Principles", "DSA", "Unit Testing (JUnit 5 + Mockito)"],
   },
   {
     category: "Cloud & Platforms",
@@ -60,7 +56,7 @@ const EXPERIENCE = [
     title: "B.Tech, Computer Science & Engineering",
     org: "DYPCET, Kolhapur",
     period: "2023 – 2027",
-    description: "CGPA: 8.5 — Final year student. Focused on backend systems, distributed architecture, and AI integration.",
+    description: "CGPA: 8.3 — Final year student. Focused on backend systems, distributed architecture, and AI integration.",
   },
   {
     type: "work",

@@ -8,8 +8,8 @@ import Image from "next/image";
 const ROLES = [
   "Backend Engineer",
   "Spring Boot Developer",
-  "AI Integration Builder",
-  "Event-Driven Systems",
+  "Software Engineer",
+  "Java Backend Developer",
 ];
 
 const TECH = ["Java · Spring Boot", "Google Gemini AI", "Apache Kafka", "PostgreSQL · Docker"];
@@ -60,7 +60,7 @@ export default function Hero() {
           className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-400 text-xs font-semibold"
         >
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          Available for full-time SWE roles
+          Available for Software Engineer & Backend Roles
         </motion.div>
 
         {/* Profile photo */}

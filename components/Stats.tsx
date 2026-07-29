@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const STATS = [
   { value: 2,    suffix: "",  label: "Production Projects" },
-  { value: 8.5,  suffix: "",  label: "CGPA",                decimal: true },
+  { value: 8.3,  suffix: "",  label: "CGPA",                decimal: true },
   { value: 19,   suffix: "+", label: "Unit Tests Written" },
   { value: 38,   suffix: "",  label: "REST Endpoints" },
   { value: 4,    suffix: "+", label: "Certifications" },
