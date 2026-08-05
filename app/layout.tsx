@@ -16,14 +16,14 @@ const geistMono = Geist_Mono({
 // TODO: Replace with your deployed URL once live
 // -------------------------------------------------------
 export const metadata: Metadata = {
-  title: "Omkar Shetake | Software Engineer & Backend Developer",
+  title: "Omkar Shetake | Java Developer & Backend Engineer",
   description:
-    "Portfolio of Omkar Shetake — a Software Engineer and Backend Developer specialising in Java, Spring Boot, AI integrations, and event-driven systems.",
-  keywords: ["software engineer", "backend developer", "java", "spring boot", "kafka", "gemini ai", "portfolio", "omkar shetake"],
+    "Portfolio of Omkar Shetake — a Java Developer and Backend Engineer specialising in Spring Boot, AI integrations, and event-driven systems.",
+  keywords: ["java developer", "backend developer", "spring boot", "kafka", "gemini ai", "portfolio", "omkar shetake"],
   authors: [{ name: "Omkar Shetake" }],
   openGraph: {
-    title: "Omkar Shetake | Software Engineer & Backend Developer",
-    description: "Portfolio of Omkar Shetake — Software Engineer specialising in Java, Spring Boot, AI, and Kafka.",
+    title: "Omkar Shetake | Java Developer & Backend Engineer",
+    description: "Portfolio of Omkar Shetake — Java Developer specialising in Spring Boot, AI, and Kafka.",
     type: "website",
     // TODO: Replace with your deployed URL
     url: "https://yourportfolio.dev",

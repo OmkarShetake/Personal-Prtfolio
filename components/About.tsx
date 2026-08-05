@@ -24,7 +24,7 @@ const TABS = [
         </p>
         <p>
           I&apos;m actively seeking a{" "}
-          <span className="font-semibold text-indigo-600 dark:text-indigo-400">Software Engineer role</span> where I
+          <span className="font-semibold text-indigo-600 dark:text-indigo-400">Java Developer role</span> where I
           can contribute to scalable, intelligent backend systems and keep growing as an engineer.
         </p>
       </div>
@@ -58,7 +58,7 @@ const TABS = [
     content: (
       <div className="space-y-3">
         {[
-          { emoji: "🎯", title: "Short-term",  desc: "Land a full-time Software Engineer role and contribute to a real-world backend system at scale." },
+          { emoji: "🎯", title: "Short-term",  desc: "Land a full-time Java Developer role and contribute to a real-world backend system at scale." },
           { emoji: "⚡", title: "Mid-term",    desc: "Deepen expertise in distributed systems, cloud-native architecture (AWS/GCP), and ML-powered APIs." },
           { emoji: "🚀", title: "Long-term",   desc: "Build or contribute to products that solve meaningful problems — especially at the intersection of AI and social impact." },
         ].map((g) => (

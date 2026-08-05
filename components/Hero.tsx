@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const ROLES = [
-  "Backend Engineer",
+  "Java Developer",
+  "Backend Developer",
   "Spring Boot Developer",
-  "Software Engineer",
+  "AI Integration Builder",
   "Java Backend Developer",
 ];
 
@@ -60,7 +61,7 @@ export default function Hero() {
           className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-400 text-xs font-semibold"
         >
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          Available for Software Engineer & Backend Roles
+          Available for Java Developer &amp; Backend Roles
         </motion.div>
 
         {/* Profile photo */}

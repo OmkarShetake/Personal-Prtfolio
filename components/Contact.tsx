@@ -96,7 +96,7 @@ export default function Contact() {
             Get In Touch
           </h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto text-sm">
-            I&apos;m currently looking for full-time Software Engineer opportunities. If you have a role, a project, or just want to connect — drop me a message.
+            I&apos;m currently looking for full-time Java Developer opportunities. If you have a role, a project, or just want to connect — drop me a message.
           </p>
         </motion.div>
 
