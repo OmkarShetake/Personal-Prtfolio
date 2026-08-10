@@ -6,47 +6,39 @@ import { Download, Briefcase, GraduationCap, Award } from "lucide-react";
 const SKILL_CATEGORIES = [
   {
     category: "Languages",
-    skills: ["Java", "Python", "JavaScript", "SQL"],
+    skills: ["Java", "JavaScript", "SQL", "Python"],
   },
   {
     category: "Backend Frameworks",
     skills: [
       "Spring Boot 3",
-      "Spring AI",
+      "REST APIs",
       "Spring Security (JWT)",
-      "Spring WebSocket",
       "Spring Data JPA / Hibernate",
     ],
   },
   {
-    category: "Frontend",
-    skills: ["HTML5", "CSS3", "Vanilla JS"],
+    category: "Databases & Cache",
+    skills: ["PostgreSQL", "Redis"],
   },
   {
-    category: "Databases & Cache",
-    skills: ["PostgreSQL 16", "pgvector", "Redis 7"],
+    category: "Messaging & Real-Time",
+    skills: ["Apache Kafka", "WebSocket", "STOMP"],
   },
   {
     category: "DevOps & Tools",
-    skills: ["Docker", "Docker Compose", "Maven", "Flyway", "Nginx", "Git", "GitHub", "Swagger / OpenAPI", "ZXing"],
-  },
-  {
-    category: "Architecture & AI",
-    skills: [
-      "Apache Kafka (KRaft)",
-      "REST APIs",
-      "WebSocket / STOMP",
-      "Google Gemini AI (Multimodal)",
-      "pgvector Embeddings",
-    ],
+    skills: ["Docker Compose", "Maven", "Flyway", "Nginx", "Git", "GitHub"],
   },
   {
     category: "Core Concepts",
-    skills: ["OOP", "SOLID Principles", "DSA", "Unit Testing (JUnit 5 + Mockito)"],
-  },
-  {
-    category: "Cloud & Platforms",
-    skills: ["AWS Cloud Architecting", "AWS Cloud Foundations", "Cloudinary", "Gmail SMTP"],
+    skills: [
+      "Object-Oriented Programming (OOP)",
+      "SOLID Principles",
+      "Data Structures & Algorithms",
+      "DBMS",
+      "Operating Systems",
+      "JUnit 5 + Mockito",
+    ],
   },
 ];
 
