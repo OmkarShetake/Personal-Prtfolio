@@ -1,32 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { Sun, Moon } from "lucide-react";
 
-export default function ThemeToggle() {
-  const [dark, setDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
+function subscribeTheme(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const observer = new MutationObserver(callback);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+}
 
-  // Read stored preference on mount, fall back to OS preference
+function getThemeSnapshot(): boolean {
+  if (typeof window === "undefined") return false;
+  return document.documentElement.classList.contains("dark");
+}
+
+function getServerSnapshot(): boolean {
+  return false;
+}
+
+const emptySubscribe = () => () => {};
+
+export default function ThemeToggle() {
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
+  const isDark = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerSnapshot);
+
   useEffect(() => {
-    setMounted(true);
     const stored = localStorage.getItem("theme");
-    if (stored === "dark") {
-      setDark(true);
+    if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
       document.documentElement.classList.add("dark");
-    } else if (stored === "light") {
-      setDark(false);
+    } else {
       document.documentElement.classList.remove("dark");
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setDark(true);
-      document.documentElement.classList.add("dark");
     }
   }, []);
 
   const toggle = () => {
-    const next = !dark;
-    setDark(next);
-    if (next) {
+    const nextDark = !isDark;
+    if (nextDark) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     } else {
@@ -35,16 +48,18 @@ export default function ThemeToggle() {
     }
   };
 
-  // Avoid hydration mismatch — render nothing until mounted
-  if (!mounted) return <div className="w-8 h-8" />;
+  if (!mounted) {
+    return <div className="w-8 h-8" aria-hidden="true" />;
+  }
 
   return (
     <button
       onClick={toggle}
-      aria-label="Toggle dark mode"
-      className="w-8 h-8 flex items-center justify-center rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+      type="button"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700/80 bg-white/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 dark:hover:border-indigo-600 transition-all shadow-xs"
     >
-      {dark ? <Sun size={18} /> : <Moon size={18} />}
+      {isDark ? <Sun size={17} className="text-amber-400" /> : <Moon size={17} className="text-slate-700 dark:text-slate-200" />}
     </button>
   );
 }

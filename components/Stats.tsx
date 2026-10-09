@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { Layers, GraduationCap, CheckCircle, Server, Award } from "lucide-react";
 
 const STATS = [
-  { value: 2,    suffix: "",  label: "Production Projects" },
-  { value: 8.3,  suffix: "",  label: "CGPA",                decimal: true },
-  { value: 19,   suffix: "+", label: "Unit Tests Written" },
-  { value: 38,   suffix: "",  label: "REST Endpoints" },
-  { value: 4,    suffix: "+", label: "Certifications" },
+  { value: 2,    suffix: "",  label: "Production Projects", sublabel: "Full-Stack & Event-Driven", icon: Layers },
+  { value: 8.3,  suffix: "",  label: "B.Tech CGPA",         sublabel: "DYPCET Kolhapur",          decimal: true, icon: GraduationCap },
+  { value: 19,   suffix: "+", label: "Unit Tests Written",  sublabel: "JUnit 5 + Mockito",       icon: CheckCircle },
+  { value: 38,   suffix: "",  label: "REST Endpoints",      sublabel: "Swagger / OpenAPI",        icon: Server },
+  { value: 4,    suffix: "+", label: "Certifications",      sublabel: "AWS & Google Cloud",       icon: Award },
 ];
 
 function useCountUp(target: number, duration: number, started: boolean, decimal = false) {
@@ -33,21 +34,38 @@ function useCountUp(target: number, duration: number, started: boolean, decimal 
   return count;
 }
 
-function StatItem({ value, suffix, label, decimal, started }: {
+function StatCard({
+  value,
+  suffix,
+  label,
+  sublabel,
+  decimal,
+  started,
+  icon: Icon,
+}: {
   value: number;
   suffix: string;
   label: string;
+  sublabel: string;
   decimal?: boolean;
   started: boolean;
+  icon: React.ComponentType<{ size: number; className?: string }>;
 }) {
   const count = useCountUp(value, 1200, started, decimal);
   return (
-    <div className="flex flex-col items-center gap-1 px-4">
-      <span className="text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 tabular-nums">
-        {decimal ? count.toFixed(1) : count}{suffix}
+    <div className="flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl bg-white/70 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/60 shadow-xs hover:border-indigo-300 dark:hover:border-indigo-600 transition-all group">
+      <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+        <Icon size={16} />
+      </div>
+      <span className="text-2.5xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums tracking-tight">
+        {decimal ? count.toFixed(1) : count}
+        <span className="text-indigo-600 dark:text-indigo-400">{suffix}</span>
       </span>
-      <span className="text-xs text-slate-500 dark:text-slate-400 font-medium text-center">
+      <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 mt-1">
         {label}
+      </span>
+      <span className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+        {sublabel}
       </span>
     </div>
   );
@@ -60,25 +78,27 @@ export default function Stats() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setStarted(true); },
-      { threshold: 0.4 }
+      { threshold: 0.25 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={ref} className="py-12 bg-white dark:bg-slate-900 border-y border-slate-100 dark:border-slate-800">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-8 sm:gap-12"
-      >
-        {STATS.map((s) => (
-          <StatItem key={s.label} {...s} started={started} />
-        ))}
-      </motion.div>
+    <section ref={ref} className="py-10 bg-slate-50/50 dark:bg-slate-900/40 border-y border-slate-200/60 dark:border-slate-800">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4"
+        >
+          {STATS.map((s) => (
+            <StatCard key={s.label} {...s} started={started} />
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }
