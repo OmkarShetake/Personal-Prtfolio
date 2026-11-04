@@ -104,7 +104,7 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
-          <p className="text-xs font-semibold tracking-widest uppercase text-indigo-600 dark:text-indigo-400 mb-2">
+          <p className="text-xs font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-2">
             Get in touch
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-3">
@@ -122,7 +122,7 @@ export default function Contact() {
             <button
               onClick={handleCopyEmail}
               type="button"
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium transition-all shadow-xs"
+              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-medium transition-all shadow-xs"
             >
               {copied ? (
                 <>
@@ -171,7 +171,7 @@ export default function Contact() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="e.g. Satya Nadella"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
                 />
               </div>
 
@@ -190,7 +190,7 @@ export default function Contact() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="e.g. recruiter@company.com"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
                 />
               </div>
 
@@ -209,14 +209,14 @@ export default function Contact() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Tell me about your team, role requirements, or project..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition resize-none"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white font-semibold text-xs sm:text-sm transition-all shadow-xs hover:shadow-indigo-500/25 active:scale-95 mt-1"
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 disabled:opacity-60 text-white font-semibold text-xs sm:text-sm transition-all shadow-xs hover:shadow-violet-500/25 active:scale-95 mt-1"
               >
                 {status === "sending" ? (
                   <>
@@ -250,16 +250,16 @@ export default function Contact() {
           >
             {/* Location & Relocation Card */}
             <div className="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400 flex items-center gap-1.5">
                 <Sparkles size={14} />
                 <span>Placement Snapshot</span>
               </h4>
               <div className="flex items-start gap-3 text-xs text-slate-600 dark:text-slate-300">
-                <MapPin size={16} className="text-indigo-500 shrink-0 mt-0.5" />
+                <MapPin size={16} className="text-violet-500 shrink-0 mt-0.5" />
                 <span>Based in Kolhapur, Maharashtra (Open to on-site in Pune, Bengaluru, Mumbai, Hyderabad, or remote)</span>
               </div>
               <div className="flex items-start gap-3 text-xs text-slate-600 dark:text-slate-300">
-                <Briefcase size={16} className="text-indigo-500 shrink-0 mt-0.5" />
+                <Briefcase size={16} className="text-violet-500 shrink-0 mt-0.5" />
                 <span>Immediate joiner / final-year student graduating in 2027</span>
               </div>
             </div>
@@ -275,13 +275,13 @@ export default function Contact() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs hover:border-indigo-400 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs hover:border-violet-400 dark:hover:border-violet-500 hover:shadow-md transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-950/60 flex items-center justify-center text-violet-600 dark:text-violet-400 group-hover:scale-105 transition-transform">
                   <social.icon />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <p className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
                     {social.label}
                   </p>
                   <p className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-0.5">

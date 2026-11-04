@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
         {/* Brand */}
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-md bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center">
+          <div className="w-6 h-6 rounded-md bg-violet-600 dark:bg-violet-500 text-white flex items-center justify-center">
             <Code2 size={14} />
           </div>
           <span className="font-semibold text-slate-800 dark:text-slate-200">
@@ -29,7 +29,7 @@ export default function Footer() {
             <a
               key={href}
               href={href}
-              className="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="capitalize hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
             >
               {href.replace("#", "")}
             </a>
@@ -38,14 +38,14 @@ export default function Footer() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors"
+            className="hover:text-violet-600 dark:hover:text-violet-400 font-medium transition-colors"
           >
             Resume
           </a>
           <a
             href="#hero"
             aria-label="Back to top"
-            className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <ArrowUp size={14} />
           </a>

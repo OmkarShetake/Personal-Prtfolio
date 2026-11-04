@@ -97,7 +97,7 @@ export default function CodeSnippet() {
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-2 flex items-center justify-center gap-1.5">
+          <p className="text-xs font-semibold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-2 flex items-center justify-center gap-1.5">
             <Terminal size={14} />
             <span>Architecture &amp; Clean Code</span>
           </p>
@@ -137,7 +137,7 @@ export default function CodeSnippet() {
                   onClick={() => setActiveTab(s.id)}
                   className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono transition-all ${
                     activeTab === s.id
-                      ? "bg-slate-800 text-cyan-400 border border-slate-700 shadow-xs"
+                      ? "bg-slate-800 text-emerald-400 border border-slate-700 shadow-xs"
                       : "text-slate-400 hover:text-slate-200 hover:bg-slate-850"
                   }`}
                 >
@@ -175,7 +175,7 @@ export default function CodeSnippet() {
               <span className="text-slate-600">·</span>
               <span className="text-slate-400">{current.description}</span>
             </div>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-800/50">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono text-emerald-300 bg-emerald-950/60 border border-emerald-800/50">
               <Sparkles size={11} />
               {current.badge}
             </span>

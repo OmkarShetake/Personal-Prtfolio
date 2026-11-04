@@ -133,7 +133,7 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
-          <p className="text-xs font-semibold tracking-widest uppercase text-indigo-600 dark:text-indigo-400 mb-2">
+          <p className="text-xs font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-2">
             Technical Arsenal
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
@@ -147,7 +147,7 @@ export default function Skills() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-indigo-500/25 active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-violet-500/25 active:scale-95"
           >
             <Download size={15} />
             <span>Download Full Resume (PDF)</span>
@@ -164,10 +164,10 @@ export default function Skills() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="p-5 rounded-2xl bg-white dark:bg-slate-800/80 shadow-xs border border-slate-200/80 dark:border-slate-700/70 hover:border-indigo-300 dark:hover:border-indigo-600 transition-colors"
+              className="p-5 rounded-2xl bg-white dark:bg-slate-800/80 shadow-xs border border-slate-200/80 dark:border-slate-700/70 hover:border-violet-300 dark:hover:border-violet-600 transition-colors"
             >
               <div className="flex items-center gap-2.5 mb-3.5">
-                <div className="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                <div className="w-7 h-7 rounded-lg bg-violet-50 dark:bg-violet-950/60 text-violet-600 dark:text-violet-400 flex items-center justify-center">
                   <cat.icon size={15} />
                 </div>
                 <h3 className="text-xs font-bold tracking-wider uppercase text-slate-800 dark:text-slate-200">
@@ -203,7 +203,7 @@ export default function Skills() {
 
         <div className="relative mb-20 max-w-3xl mx-auto">
           {/* Vertical line */}
-          <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-0.5 bg-indigo-100 dark:bg-indigo-950/80" />
+          <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-0.5 bg-violet-100 dark:bg-violet-950/80" />
           <div className="flex flex-col gap-7">
             {EXPERIENCE.map((item, i) => (
               <motion.div
@@ -216,7 +216,7 @@ export default function Skills() {
                 className="relative pl-14 sm:pl-16"
               >
                 {/* Node icon */}
-                <div className="absolute left-0 top-1 w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-white dark:bg-slate-800 border-2 border-indigo-500/40 dark:border-indigo-500 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-xs">
+                <div className="absolute left-0 top-1 w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-white dark:bg-slate-800 border-2 border-violet-500/40 dark:border-violet-500 flex items-center justify-center text-violet-600 dark:text-violet-400 shadow-xs">
                   {item.type === "work" ? (
                     <Briefcase size={17} />
                   ) : (
@@ -230,7 +230,7 @@ export default function Skills() {
                       <h4 className="text-base font-bold text-slate-900 dark:text-white">
                         {item.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 font-medium">
+                      <p className="text-xs sm:text-sm text-violet-600 dark:text-violet-400 font-medium">
                         {item.org}
                       </p>
                     </div>
@@ -282,17 +282,17 @@ export default function Skills() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="flex items-start justify-between gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/80 shadow-xs border border-slate-200/80 dark:border-slate-700/70 hover:border-indigo-400 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
+                className="flex items-start justify-between gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/80 shadow-xs border border-slate-200/80 dark:border-slate-700/70 hover:border-violet-400 dark:hover:border-violet-500 hover:shadow-md transition-all group"
               >
                 <div className="flex items-start gap-3.5">
-                  <div className="shrink-0 mt-0.5 w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-105 transition-transform">
+                  <div className="shrink-0 mt-0.5 w-9 h-9 rounded-xl bg-violet-50 dark:bg-violet-950/60 flex items-center justify-center text-violet-600 dark:text-violet-400 group-hover:scale-105 transition-transform">
                     <Award size={18} />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400">
                       {cert.badge}
                     </span>
-                    <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug mt-0.5">
+                    <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors leading-snug mt-0.5">
                       {cert.title}
                     </p>
                     <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
@@ -301,7 +301,7 @@ export default function Skills() {
                   </div>
                 </div>
 
-                <div className="shrink-0 p-1.5 rounded-lg text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:bg-slate-100 dark:group-hover:bg-slate-700/50 transition-colors">
+                <div className="shrink-0 p-1.5 rounded-lg text-slate-400 group-hover:text-violet-600 dark:group-hover:text-violet-400 group-hover:bg-slate-100 dark:group-hover:bg-slate-700/50 transition-colors">
                   <ExternalLink size={15} />
                 </div>
               </motion.a>

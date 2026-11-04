@@ -58,13 +58,13 @@ export default function Navbar() {
           href="#hero"
           className="group flex items-center gap-2.5 font-bold text-slate-900 dark:text-white hover:opacity-90 transition-opacity"
         >
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-lg bg-violet-600 dark:bg-violet-500 text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
             <Code2 size={18} />
           </div>
           <span className="text-base sm:text-lg tracking-tight font-semibold">
             Omkar Shetake
           </span>
-          <span className="hidden sm:inline-flex items-center text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 border border-indigo-200/80 dark:border-indigo-800/80 font-medium">
+          <span className="hidden sm:inline-flex items-center text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-violet-50 dark:bg-violet-950/70 text-violet-600 dark:text-violet-400 border border-violet-200/80 dark:border-violet-800/80 font-medium">
             Backend SWE
           </span>
         </a>
@@ -80,7 +80,7 @@ export default function Navbar() {
                     href={link.href}
                     className={`relative px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                       isActive
-                        ? "text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-900 shadow-xs"
+                        ? "text-violet-600 dark:text-violet-400 bg-white dark:bg-zinc-900 shadow-xs"
                         : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                     }`}
                   >
@@ -96,7 +96,7 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-xs hover:shadow-indigo-500/20"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-violet-600 hover:bg-violet-700 text-white transition-all shadow-xs hover:shadow-violet-500/20"
           >
             <FileText size={13} />
             <span>Resume</span>
@@ -112,7 +112,7 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-lg bg-indigo-600 text-white"
+            className="flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-lg bg-violet-600 text-white"
           >
             <FileText size={12} />
             Resume
@@ -121,7 +121,7 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen((p) => !p)}
             aria-label="Toggle menu"
-            className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-indigo-600 transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-violet-600 transition-colors"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -148,12 +148,12 @@ export default function Navbar() {
                       onClick={closeMenu}
                       className={`flex items-center justify-between py-2.5 px-3 rounded-lg text-sm font-medium transition-colors ${
                         isActive
-                          ? "bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400"
-                          : "text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+                          ? "bg-violet-50 dark:bg-violet-950/50 text-violet-600 dark:text-violet-400"
+                          : "text-slate-600 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400"
                       }`}
                     >
                       <span>{link.label}</span>
-                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />}
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />}
                     </a>
                   </li>
                 );
@@ -164,7 +164,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
-                  className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-semibold bg-indigo-600 text-white"
+                  className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-semibold bg-violet-600 text-white"
                 >
                   <FileText size={15} />
                   <span>View Resume (PDF)</span>

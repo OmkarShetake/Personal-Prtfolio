@@ -12,9 +12,9 @@ const TABS = [
     content: (
       <div className="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
         <p>
-          I&apos;m a <span className="font-semibold text-indigo-600 dark:text-indigo-400">final-year B.Tech CS student</span> at{" "}
+          I&apos;m a <span className="font-semibold text-violet-600 dark:text-violet-400">final-year B.Tech CS student</span> at{" "}
           <span className="font-semibold text-slate-900 dark:text-slate-200">DYPCET, Kolhapur</span> with a CGPA of{" "}
-          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold text-xs border border-indigo-200 dark:border-indigo-800">8.3</span>,
+          <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-violet-50 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300 font-bold text-xs border border-violet-200 dark:border-violet-800">8.3</span>,
           passionate about building production-grade, AI-integrated backend systems.
         </p>
         <p>
@@ -24,7 +24,7 @@ const TABS = [
         </p>
         <p>
           I&apos;m actively seeking a{" "}
-          <span className="font-semibold text-indigo-600 dark:text-indigo-400">Java Developer / Backend SWE role</span> where I
+          <span className="font-semibold text-violet-600 dark:text-violet-400">Java Developer / Backend SWE role</span> where I
           can contribute to scalable, resilient backend systems, write clean and tested code, and keep growing as an engineer.
         </p>
       </div>
@@ -43,7 +43,7 @@ const TABS = [
           { icon: Rocket,        text: "19 unit tests written · Docker Compose full stack" },
         ].map(({ icon: Icon, text }) => (
           <li key={text} className="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-            <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-indigo-50 dark:bg-indigo-950/70 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+            <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-violet-50 dark:bg-violet-950/70 flex items-center justify-center text-violet-600 dark:text-violet-400">
               <Icon size={14} />
             </span>
             <span>{text}</span>
@@ -65,7 +65,7 @@ const TABS = [
           <div key={g.title} className="flex items-start gap-3.5 p-3.5 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 shadow-xs">
             <span className="text-xl shrink-0 mt-0.5">{g.emoji}</span>
             <div>
-              <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400 mb-0.5">{g.title}</p>
+              <p className="text-xs font-bold text-violet-600 dark:text-violet-400 mb-0.5">{g.title}</p>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{g.desc}</p>
             </div>
           </div>
@@ -82,10 +82,10 @@ const STRENGTHS = [
     title: "Backend & Systems",
     description: "Spring Boot, Kafka, REST APIs, JWT security, Docker deployments.",
     bullets: ["Event-driven architectures", "Clean REST API design", "Docker containerization"],
-    color: "from-indigo-500 to-blue-500",
-    bg: "bg-indigo-50/70 dark:bg-indigo-950/30",
-    border: "border-indigo-100 dark:border-indigo-900/60",
-    glow: "hover:shadow-indigo-200/50 dark:hover:shadow-indigo-900/40",
+    color: "from-violet-500 to-purple-500",
+    bg: "bg-violet-50/70 dark:bg-violet-950/30",
+    border: "border-violet-100 dark:border-violet-900/60",
+    glow: "hover:shadow-violet-200/50 dark:hover:shadow-violet-900/40",
   },
   {
     icon: Lightbulb,
@@ -133,7 +133,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
-          <p className="text-xs font-semibold tracking-widest uppercase text-indigo-600 dark:text-indigo-400 mb-2">
+          <p className="text-xs font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-2">
             Get to know me
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
@@ -158,7 +158,7 @@ export default function About() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                   activeTab === tab.id
-                    ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs"
+                    ? "bg-white dark:bg-slate-900 text-violet-600 dark:text-violet-400 shadow-xs"
                     : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
@@ -209,7 +209,7 @@ export default function About() {
               <ul className="space-y-1.5 pt-3 border-t border-slate-200/50 dark:border-slate-700/50">
                 {item.bullets.map((b) => (
                   <li key={b} className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 font-medium">
-                    <CheckCircle2 size={13} className="text-indigo-500 dark:text-indigo-400 shrink-0" />
+                    <CheckCircle2 size={13} className="text-violet-500 dark:text-violet-400 shrink-0" />
                     <span>{b}</span>
                   </li>
                 ))}

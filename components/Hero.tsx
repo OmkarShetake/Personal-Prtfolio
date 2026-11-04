@@ -52,15 +52,15 @@ export default function Hero() {
       {/* Background ambient lighting */}
       <div
         aria-hidden
-        className="absolute -top-32 -left-32 w-96 h-96 bg-indigo-500/15 dark:bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"
+        className="absolute -top-32 -left-32 w-96 h-96 bg-violet-500/12 dark:bg-violet-600/18 rounded-full blur-3xl pointer-events-none"
       />
       <div
         aria-hidden
-        className="absolute -bottom-32 -right-32 w-96 h-96 bg-cyan-500/15 dark:bg-cyan-600/20 rounded-full blur-3xl pointer-events-none"
+        className="absolute -bottom-32 -right-32 w-96 h-96 bg-emerald-500/12 dark:bg-emerald-600/18 rounded-full blur-3xl pointer-events-none"
       />
       <div
         aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-sky-400/10 dark:bg-sky-500/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-fuchsia-400/8 dark:bg-fuchsia-500/8 rounded-full blur-3xl pointer-events-none"
       />
 
       <motion.div
@@ -85,7 +85,7 @@ export default function Hero() {
 
         {/* Profile photo with subtle gradient aura */}
         <div className="relative group select-none">
-          <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-indigo-500 via-sky-500 to-cyan-400 shadow-xl group-hover:scale-105 transition-transform duration-300">
+          <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-violet-600 via-fuchsia-500 to-rose-400 shadow-xl group-hover:scale-105 transition-transform duration-300">
             <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 border-2 border-white dark:border-slate-900">
               <Image
                 src="/me-min.jpeg"
@@ -106,7 +106,7 @@ export default function Hero() {
 
         {/* Headline & Rotating Role */}
         <div className="space-y-3 max-w-2xl">
-          <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-indigo-600 dark:text-cyan-400">
+          <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400">
             Hello, I&apos;m
           </p>
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -122,7 +122,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -14 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-indigo-600 via-sky-500 to-cyan-500 dark:from-indigo-400 dark:via-sky-300 dark:to-cyan-300 bg-clip-text text-transparent"
+                className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 dark:from-violet-400 dark:via-fuchsia-300 dark:to-rose-300 bg-clip-text text-transparent"
               >
                 {ROLES[roleIndex]}
               </motion.p>
@@ -150,7 +150,7 @@ export default function Hero() {
         <div className="flex flex-wrap items-center justify-center gap-3 mt-2">
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-md hover:shadow-indigo-500/25 active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm transition-all shadow-md hover:shadow-violet-500/25 active:scale-95"
           >
             <span>View Projects</span>
             <ArrowRight size={16} />
@@ -166,7 +166,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-indigo-500 dark:hover:border-indigo-400 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold text-sm transition-all active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-violet-500 dark:hover:border-violet-400 text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 font-semibold text-sm transition-all active:scale-95"
           >
             <Mail size={16} />
             <span>Contact Me</span>
@@ -181,7 +181,7 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="p-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-lg hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
           >
             <GithubIcon />
           </a>
@@ -190,14 +190,14 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="p-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-lg hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
           >
             <LinkedinIcon />
           </a>
           <a
             href="mailto:omkarshetake4655@gmail.com"
             aria-label="Send Email"
-            className="p-2 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-lg hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
           >
             <Mail size={18} />
           </a>
@@ -211,7 +211,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="mt-12 text-slate-400 dark:text-slate-600 hover:text-indigo-500 transition-colors"
+        className="mt-12 text-slate-400 dark:text-slate-600 hover:text-violet-500 transition-colors"
       >
         <ArrowDown size={20} className="animate-bounce" />
       </motion.a>

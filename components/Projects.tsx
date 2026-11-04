@@ -222,7 +222,7 @@ function Gallery({ images, title }: { images: string[]; title: string }) {
               onClick={() => go(i, i > active ? 1 : -1)}
               className={`shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
                 i === active
-                  ? "border-indigo-600 dark:border-indigo-400 scale-105 shadow-sm"
+                  ? "border-violet-600 dark:border-violet-400 scale-105 shadow-sm"
                   : "border-transparent opacity-60 hover:opacity-100"
               }`}
               aria-label={`View screenshot ${i + 1}`}
@@ -274,7 +274,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
-          <p className="text-xs font-semibold tracking-widest uppercase text-indigo-600 dark:text-indigo-400 mb-2">
+          <p className="text-xs font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-2">
             Production &amp; Engineering Showcase
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-3">
@@ -303,7 +303,7 @@ export default function Projects() {
                   <div>
                     {/* Header Badges */}
                     <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <span className="text-[11px] font-bold tracking-wider uppercase text-indigo-600 dark:text-indigo-400 px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200/60 dark:border-indigo-800/60">
+                      <span className="text-[11px] font-bold tracking-wider uppercase text-violet-600 dark:text-violet-400 px-2.5 py-0.5 rounded-full bg-violet-50 dark:bg-violet-950/60 border border-violet-200/60 dark:border-violet-800/60">
                         {project.label}
                       </span>
                       <span className="text-[11px] font-medium text-slate-600 dark:text-slate-400 px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700/50">
@@ -320,8 +320,8 @@ export default function Projects() {
 
                     {/* System Topology Pipeline Flow */}
                     <div className="flex items-center gap-2 p-2.5 px-3 rounded-xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-700/80 mb-5 overflow-x-auto scrollbar-none">
-                      <Workflow size={14} className="text-cyan-500 shrink-0" />
-                      <span className="text-[11px] font-mono text-slate-700 dark:text-cyan-300 whitespace-nowrap">
+                      <Workflow size={14} className="text-emerald-500 shrink-0" />
+                      <span className="text-[11px] font-mono text-slate-700 dark:text-emerald-300 whitespace-nowrap">
                         {project.architectureFlow}
                       </span>
                     </div>
@@ -341,8 +341,8 @@ export default function Projects() {
                     </div>
 
                     {/* Architectural Decision Callout */}
-                    <div className="p-3.5 rounded-xl bg-gradient-to-r from-indigo-50/80 via-sky-50/50 to-emerald-50/50 dark:from-indigo-950/40 dark:via-sky-950/30 dark:to-emerald-950/20 border border-indigo-200/70 dark:border-indigo-800/60 mb-5">
-                      <div className="flex items-center gap-1.5 mb-1 text-indigo-700 dark:text-cyan-300">
+                    <div className="p-3.5 rounded-xl bg-gradient-to-r from-violet-50/80 via-violet-50/40 to-emerald-50/40 dark:from-violet-950/40 dark:via-violet-950/20 dark:to-emerald-950/20 border border-violet-200/70 dark:border-violet-800/60 mb-5">
+                      <div className="flex items-center gap-1.5 mb-1 text-violet-700 dark:text-violet-300">
                         <Lightbulb size={13} className="text-amber-500 shrink-0" />
                         <span className="text-[11px] font-bold uppercase tracking-wider">
                           Architectural Decision: {project.decision.question}
@@ -356,13 +356,13 @@ export default function Projects() {
                     {/* Architectural Highlights */}
                     <div className="mb-6">
                       <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1.5">
-                        <Cpu size={14} className="text-indigo-500" />
+                        <Cpu size={14} className="text-violet-500" />
                         <span>System Highlights &amp; Engineering</span>
                       </p>
                       <ul className="flex flex-col gap-2.5">
                         {project.highlights.map((point) => (
                           <li key={point} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                            <CheckCircle2 size={15} className="shrink-0 mt-0.5 text-indigo-600 dark:text-indigo-400" />
+                            <CheckCircle2 size={15} className="shrink-0 mt-0.5 text-violet-600 dark:text-violet-400" />
                             <span>{point}</span>
                           </li>
                         ))}
@@ -398,14 +398,14 @@ export default function Projects() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-xs"
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-violet-600 hover:bg-violet-700 text-white transition-all shadow-xs"
                         >
                           <ExternalLink size={14} />
                           <span>Live Demo</span>
                         </a>
                       ) : (
                         <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/40 border border-slate-200/60 dark:border-slate-700/50">
-                          <GitFork size={13} className="text-indigo-500" />
+                          <GitFork size={13} className="text-violet-500" />
                           <span>Full Architecture on GitHub</span>
                         </span>
                       )}

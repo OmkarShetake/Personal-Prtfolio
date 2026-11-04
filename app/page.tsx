@@ -11,7 +11,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white dark:bg-[#080c14] text-slate-900 dark:text-slate-100 transition-colors duration-300 bg-grid-pattern relative">
+    <main className="min-h-screen bg-white dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 transition-colors duration-300 bg-grid-pattern relative">
       {/* Thin gradient bar that grows as you scroll */}
       <ScrollProgress />
       <Navbar />

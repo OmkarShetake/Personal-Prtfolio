@@ -53,13 +53,13 @@ function StatCard({
 }) {
   const count = useCountUp(value, 1200, started, decimal);
   return (
-    <div className="flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl bg-white/70 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/60 shadow-xs hover:border-indigo-300 dark:hover:border-indigo-600 transition-all group">
-      <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+    <div className="flex flex-col items-center text-center p-4 sm:p-5 rounded-2xl bg-white/70 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/60 shadow-xs hover:border-violet-300 dark:hover:border-violet-600 transition-all group">
+      <div className="w-8 h-8 rounded-lg bg-violet-50 dark:bg-violet-950/60 text-violet-600 dark:text-violet-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
         <Icon size={16} />
       </div>
       <span className="text-2.5xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tabular-nums tracking-tight">
         {decimal ? count.toFixed(1) : count}
-        <span className="text-indigo-600 dark:text-indigo-400">{suffix}</span>
+        <span className="text-violet-600 dark:text-violet-400">{suffix}</span>
       </span>
       <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 mt-1">
         {label}
