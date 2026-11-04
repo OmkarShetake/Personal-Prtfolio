@@ -21,7 +21,7 @@ const SNIPPETS: Snippet[] = [
     badge: "Kafka KRaft · Async Pipeline",
     project: "StayFinder Architecture",
     description: "Decoupled asynchronous notification pipeline preventing booking bottlenecks during high concurrency.",
-    highlight: "Ensures guaranteed message delivery with transactional event ordering.",
+    highlight: "Guarantees transactional event ordering with isolated error handling.",
     code: `@Service
 @RequiredArgsConstructor
 @Slf4j
@@ -93,38 +93,38 @@ export default function CodeSnippet() {
   };
 
   return (
-    <section className="py-20 px-4 bg-slate-50/40 dark:bg-slate-900/40 border-t border-slate-200/60 dark:border-slate-800">
+    <section className="py-20 px-4 bg-zinc-50/50 dark:bg-zinc-950/40 border-t border-zinc-200/80 dark:border-zinc-850">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-2 flex items-center justify-center gap-1.5">
+          <p className="text-xs font-mono font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-2 flex items-center justify-center gap-1.5">
             <Terminal size={14} />
             <span>Architecture &amp; Clean Code</span>
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-3">
             Production Java Patterns
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-            A peek under the hood: clean Spring Boot design, asynchronous Kafka event publishing, and vector database queries.
+          <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto">
+            A peek under the hood: clean Spring Boot 3 architecture, asynchronous Kafka KRaft event publishing, and stateless JWT security filters.
           </p>
         </div>
 
         {/* IDE Container */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl"
+          transition={{ duration: 0.45 }}
+          className="rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 shadow-2xl"
         >
-          {/* Mac OS Window Header */}
-          <div className="flex flex-wrap items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-slate-800 gap-3">
+          {/* macOS Window Header */}
+          <div className="flex flex-wrap items-center justify-between px-4 py-3 bg-zinc-900/90 border-b border-zinc-800 gap-3">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
               <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
               <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-              <span className="ml-3 text-xs font-mono text-slate-400 hidden sm:inline-block">
-                omkar-backend-engine / src / main / java
+              <span className="ml-3 text-xs font-mono text-zinc-400 hidden sm:inline-block">
+                stayfinder-backend / src / main / java
               </span>
             </div>
 
@@ -137,8 +137,8 @@ export default function CodeSnippet() {
                   onClick={() => setActiveTab(s.id)}
                   className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono transition-all ${
                     activeTab === s.id
-                      ? "bg-slate-800 text-emerald-400 border border-slate-700 shadow-xs"
-                      : "text-slate-400 hover:text-slate-200 hover:bg-slate-850"
+                      ? "bg-zinc-800 text-zinc-100 border border-zinc-700 shadow-xs"
+                      : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-850"
                   }`}
                 >
                   <FileCode size={13} />
@@ -152,7 +152,7 @@ export default function CodeSnippet() {
               onClick={handleCopy}
               type="button"
               aria-label="Copy code snippet"
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700 border border-slate-700 transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono text-zinc-300 hover:text-white bg-zinc-800/80 hover:bg-zinc-700 border border-zinc-700 transition-colors"
             >
               {copied ? (
                 <>
@@ -169,25 +169,25 @@ export default function CodeSnippet() {
           </div>
 
           {/* Context Strip */}
-          <div className="px-5 py-2.5 bg-slate-900/50 border-b border-slate-800/80 flex flex-wrap items-center justify-between text-xs gap-2">
+          <div className="px-5 py-2.5 bg-zinc-900/50 border-b border-zinc-800/80 flex flex-wrap items-center justify-between text-xs gap-2">
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-slate-200">{current.project}</span>
-              <span className="text-slate-600">·</span>
-              <span className="text-slate-400">{current.description}</span>
+              <span className="font-semibold text-zinc-200">{current.project}</span>
+              <span className="text-zinc-600">·</span>
+              <span className="text-zinc-400">{current.description}</span>
             </div>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono text-emerald-300 bg-emerald-950/60 border border-emerald-800/50">
-              <Sparkles size={11} />
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono text-zinc-300 bg-zinc-800 border border-zinc-700">
+              <Sparkles size={11} className="text-violet-400" />
               {current.badge}
             </span>
           </div>
 
           {/* Code Body */}
-          <div className="p-4 sm:p-6 overflow-x-auto text-xs sm:text-sm font-mono text-slate-200 leading-relaxed max-h-[460px] scrollbar-thin">
+          <div className="p-4 sm:p-6 overflow-x-auto text-xs sm:text-sm font-mono text-zinc-200 leading-relaxed max-h-[460px] scrollbar-thin">
             <pre>
               <code>
                 {current.code.split("\n").map((line, idx) => (
                   <div key={idx} className="table-row">
-                    <span className="table-cell pr-5 text-right select-none text-slate-600 text-xs">
+                    <span className="table-cell pr-5 text-right select-none text-zinc-600 text-xs">
                       {idx + 1}
                     </span>
                     <span className="table-cell whitespace-pre">{line}</span>
@@ -198,11 +198,11 @@ export default function CodeSnippet() {
           </div>
 
           {/* Engineering Takeaway Footer */}
-          <div className="px-5 py-3 bg-slate-900/70 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+          <div className="px-5 py-3 bg-zinc-900/70 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
             <span className="text-emerald-400 font-medium">
               💡 Architectural Takeaway: {current.highlight}
             </span>
-            <span className="font-mono text-[11px] text-slate-500 hidden sm:inline">
+            <span className="font-mono text-[11px] text-zinc-500 hidden sm:inline">
               Java 21 · Spring Boot 3
             </span>
           </div>

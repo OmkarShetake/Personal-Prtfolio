@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Send, Check, Copy, MapPin, Briefcase, Sparkles, AlertCircle } from "lucide-react";
+import { Send, Check, MapPin, Briefcase, Sparkles, AlertCircle } from "lucide-react";
 
 // Brand SVG icons
 const GithubIcon = () => (
@@ -18,10 +18,6 @@ const LinkedinIcon = () => (
 );
 
 const EMAIL_ADDRESS = "omkarshetake4655@gmail.com";
-
-// ─── Web3Forms access key ───────────────────────────────────────────────────
-// Get your FREE key (takes 30 seconds) at https://web3forms.com
-// Enter your Gmail → they email you the key → paste it below.
 const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 const SOCIAL_LINKS = [
@@ -37,12 +33,6 @@ const SOCIAL_LINKS = [
     href: "https://www.linkedin.com/in/omkar-shetake-53356b285/",
     icon: LinkedinIcon,
   },
-  {
-    label: "Direct Email",
-    handle: EMAIL_ADDRESS,
-    href: `mailto:${EMAIL_ADDRESS}`,
-    icon: Mail,
-  },
 ];
 
 type FormState = {
@@ -56,13 +46,6 @@ type Status = "idle" | "sending" | "success" | "error";
 export default function Contact() {
   const [form, setForm] = useState<FormState>({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(EMAIL_ADDRESS);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -76,8 +59,6 @@ export default function Contact() {
 
     setStatus("sending");
 
-    // ── Option 1: Web3Forms (real email delivery — preferred) ────────────────
-    // Works when WEB3FORMS_KEY is set to your actual key from web3forms.com
     if (WEB3FORMS_KEY !== "YOUR_ACCESS_KEY_HERE") {
       try {
         const res = await fetch("https://api.web3forms.com/submit", {
@@ -100,23 +81,20 @@ export default function Contact() {
           return;
         }
       } catch {
-        // fall through to mailto fallback below
+        // fall through to mailto fallback
       }
     }
 
-    // ── Option 2: mailto fallback (opens email client) ───────────────────────
-    // Reliable cross-browser approach using window.open
+    // mailto fallback
     const mailtoUrl = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(
       `Portfolio Inquiry from ${form.name}`
     )}&body=${encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
     )}`;
 
-    // window.open is more reliable than location.href for mailto links
     const opened = window.open(mailtoUrl, "_self");
 
     if (!opened && typeof document !== "undefined") {
-      // Some browsers block window.open — create a hidden anchor and click it
       const a = document.createElement("a");
       a.href = mailtoUrl;
       a.style.display = "none";
@@ -130,96 +108,49 @@ export default function Contact() {
     setTimeout(() => setStatus("idle"), 6000);
   };
 
-  const keyNotSet = WEB3FORMS_KEY === "YOUR_ACCESS_KEY_HERE";
-
   return (
-    <section id="contact" className="py-24 px-4 bg-slate-50/50 dark:bg-zinc-900/40">
+    <section id="contact" className="py-24 px-4 bg-zinc-50/50 dark:bg-zinc-950/40">
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
           className="mb-14 text-center"
         >
-          <p className="text-xs font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-2">
-            Get in touch
+          <p className="text-xs font-mono font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-2">
+            Initiate Contact
           </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 mb-3">
             Let&apos;s Connect
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-md mx-auto leading-relaxed">
             Actively seeking full-time Java Developer &amp; Backend SWE opportunities. Have an open role, an interesting project, or want to discuss system architecture?
           </p>
-
-          {/* Quick Copy Email Action Pill */}
-          <div className="mt-5 inline-flex items-center gap-2 p-1.5 pl-3.5 pr-2 rounded-full bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 shadow-xs">
-            <span className="text-xs font-mono text-slate-700 dark:text-slate-300">
-              {EMAIL_ADDRESS}
-            </span>
-            <button
-              onClick={handleCopyEmail}
-              type="button"
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-medium transition-all shadow-xs"
-            >
-              {copied ? (
-                <>
-                  <Check size={13} />
-                  <span>Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy size={13} />
-                  <span>Copy</span>
-                </>
-              )}
-            </button>
-          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Contact form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="md:col-span-7 p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-800/80 border border-slate-200/80 dark:border-zinc-700/80 shadow-xs"
+            transition={{ duration: 0.45 }}
+            className="md:col-span-7 p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs"
           >
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-1">
               Send a Message
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
-              {keyNotSet
-                ? "Will open your email client with the message pre-filled."
-                : "Message goes straight to my inbox — I reply within 24 hours."}
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-6">
+              Fill out the form below to reach me directly.
             </p>
-
-            {/* Web3Forms setup notice — only shown when key not configured */}
-            {keyNotSet && (
-              <div className="mb-5 flex items-start gap-2.5 p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-700 dark:text-amber-300">
-                <AlertCircle size={15} className="shrink-0 mt-0.5" />
-                <span>
-                  <strong>Developer note:</strong> For direct inbox delivery, get a free API key at{" "}
-                  <a
-                    href="https://web3forms.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline font-semibold"
-                  >
-                    web3forms.com
-                  </a>{" "}
-                  and replace <code className="bg-amber-100 dark:bg-amber-900/60 px-1 rounded">YOUR_ACCESS_KEY_HERE</code> in <code className="bg-amber-100 dark:bg-amber-900/60 px-1 rounded">Contact.tsx</code>.
-                </span>
-              </div>
-            )}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5"
+                  className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5 font-mono"
                 >
                   Your Name
                 </label>
@@ -231,14 +162,14 @@ export default function Contact() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="e.g. Satya Nadella"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
+                  className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 text-sm focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 transition"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5"
+                  className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5 font-mono"
                 >
                   Your Email
                 </label>
@@ -250,14 +181,14 @@ export default function Contact() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="e.g. recruiter@company.com"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
+                  className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 text-sm focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 transition"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5"
+                  className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5 font-mono"
                 >
                   Message / Role Details
                 </label>
@@ -269,23 +200,23 @@ export default function Contact() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Tell me about your team, role requirements, or project..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition resize-none"
+                  className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/70 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 text-sm focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 transition resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold text-xs sm:text-sm transition-all shadow-xs hover:shadow-violet-500/25 active:scale-95 mt-1"
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-white disabled:opacity-60 disabled:cursor-not-allowed font-semibold text-xs sm:text-sm transition-all shadow-xs active:scale-95 mt-1"
               >
                 {status === "sending" ? (
                   <>
-                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white dark:border-zinc-900/30 dark:border-t-zinc-900 rounded-full animate-spin" />
                     <span>Sending…</span>
                   </>
                 ) : (
                   <>
-                    <Send size={15} />
+                    <Send size={14} />
                     <span>Send Message</span>
                   </>
                 )}
@@ -296,13 +227,7 @@ export default function Contact() {
                 <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-xs text-emerald-700 dark:text-emerald-300 font-medium">
                   <Check size={15} className="shrink-0 mt-0.5 text-emerald-500" />
                   <span>
-                    {keyNotSet
-                      ? "Your email client should now be open with the message pre-filled. You can also email me directly at "
-                      : "Message sent! I'll reply to "}
-                    <a href={`mailto:${EMAIL_ADDRESS}`} className="underline font-semibold">
-                      {EMAIL_ADDRESS}
-                    </a>
-                    {keyNotSet ? "." : " within 24 hours."}
+                    Thank you! Your message has been sent successfully. I will get back to you shortly.
                   </span>
                 </div>
               )}
@@ -312,43 +237,40 @@ export default function Contact() {
                 <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-xs text-rose-700 dark:text-rose-300 font-medium">
                   <AlertCircle size={15} className="shrink-0 mt-0.5" />
                   <span>
-                    Something went wrong. Please email me directly at{" "}
-                    <a href={`mailto:${EMAIL_ADDRESS}`} className="underline font-semibold">
-                      {EMAIL_ADDRESS}
-                    </a>
+                    Something went wrong sending your message. Please try again.
                   </span>
                 </div>
               )}
             </form>
           </motion.div>
 
-          {/* Social and Placement Info */}
+          {/* Placement and Profiles Info */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.45 }}
             className="md:col-span-5 flex flex-col gap-4"
           >
             {/* Location & Relocation Card */}
-            <div className="p-5 rounded-2xl bg-white dark:bg-zinc-800/80 border border-slate-200/80 dark:border-zinc-700/80 shadow-xs space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400 flex items-center gap-1.5">
+            <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs space-y-3">
+              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400 flex items-center gap-1.5">
                 <Sparkles size={14} />
                 <span>Placement Snapshot</span>
               </h4>
-              <div className="flex items-start gap-3 text-xs text-slate-600 dark:text-slate-300">
-                <MapPin size={16} className="text-violet-500 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 text-xs text-zinc-600 dark:text-zinc-300">
+                <MapPin size={16} className="text-zinc-400 shrink-0 mt-0.5" />
                 <span>Based in Kolhapur, Maharashtra (Open to on-site in Pune, Bengaluru, Mumbai, Hyderabad, or remote)</span>
               </div>
-              <div className="flex items-start gap-3 text-xs text-slate-600 dark:text-slate-300">
-                <Briefcase size={16} className="text-violet-500 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 text-xs text-zinc-600 dark:text-zinc-300">
+                <Briefcase size={16} className="text-zinc-400 shrink-0 mt-0.5" />
                 <span>Immediate joiner / final-year student graduating in 2027</span>
               </div>
             </div>
 
-            {/* Online Links */}
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 px-1 mt-1">
-              Direct Contact &amp; Profiles
+            {/* Social Links */}
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 px-1 mt-1">
+              Social Profiles
             </h4>
 
             {SOCIAL_LINKS.map((social) => (
@@ -357,16 +279,16 @@ export default function Contact() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-zinc-800/80 border border-slate-200/80 dark:border-zinc-700/80 shadow-xs hover:border-violet-400 dark:hover:border-violet-500 hover:shadow-md transition-all group"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs hover:border-zinc-400 dark:hover:border-zinc-700 transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-950/60 flex items-center justify-center text-violet-600 dark:text-violet-400 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-800 dark:text-zinc-200 group-hover:scale-105 transition-transform">
                   <social.icon />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                  <p className="text-xs font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-violet-500 transition-colors">
                     {social.label}
                   </p>
-                  <p className="text-[11px] font-mono text-slate-500 dark:text-slate-400 mt-0.5">
+                  <p className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">
                     {social.handle}
                   </p>
                 </div>

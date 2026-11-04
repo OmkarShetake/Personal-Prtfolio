@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowDown, FileText, ArrowRight, Mail } from "lucide-react";
+import { ArrowDown, FileText, ArrowRight, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -25,11 +25,12 @@ const ROLES = [
   "Production REST API Builder",
 ];
 
-const TECH = [
-  "Java 21 · Spring Boot 3",
-  "Apache Kafka",
-  "Google Gemini AI & pgvector",
-  "PostgreSQL · Docker",
+const TECH_STACK = [
+  { label: "Java 21", category: "Core" },
+  { label: "Spring Boot 3", category: "Framework" },
+  { label: "Apache Kafka KRaft", category: "Messaging" },
+  { label: "PostgreSQL & Docker", category: "Infra" },
+  { label: "Gemini AI", category: "AI" },
 ];
 
 export default function Hero() {
@@ -39,7 +40,7 @@ export default function Hero() {
   useEffect(() => {
     const id = setInterval(
       () => setRoleIndex((i) => (i + 1) % ROLES.length),
-      2400
+      2500
     );
     return () => clearInterval(id);
   }, []);
@@ -47,46 +48,42 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] flex flex-col items-center justify-center pt-24 pb-16 px-4 text-center overflow-hidden"
+      className="relative min-h-[94vh] flex flex-col items-center justify-center pt-24 pb-16 px-4 text-center overflow-hidden"
     >
-      {/* Background ambient lighting */}
+      {/* Refined modern top spotlight lighting */}
       <div
         aria-hidden
-        className="absolute -top-32 -left-32 w-96 h-96 bg-violet-500/12 dark:bg-violet-600/18 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[340px] bg-gradient-to-b from-violet-500/10 via-violet-500/5 to-transparent blur-3xl pointer-events-none rounded-full"
       />
       <div
         aria-hidden
-        className="absolute -bottom-32 -right-32 w-96 h-96 bg-emerald-500/12 dark:bg-emerald-600/18 rounded-full blur-3xl pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-fuchsia-400/8 dark:bg-fuchsia-500/8 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-radial from-violet-600/8 to-transparent blur-2xl pointer-events-none"
       />
 
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex flex-col items-center gap-6 max-w-3xl z-10"
+        transition={{ duration: 0.55, ease: "easeOut" }}
+        className="flex flex-col items-center gap-7 max-w-3xl z-10"
       >
-        {/* Availability Badge */}
+        {/* Availability Badge — Senior style */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.15, duration: 0.4 }}
-          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300 text-xs font-semibold shadow-xs"
+          transition={{ delay: 0.1, duration: 0.35 }}
+          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-medium shadow-xs"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          Available for Java Developer &amp; SWE Roles (2025/2026/2027)
+          <span>Available for Java Developer &amp; SWE Roles (2025–2027)</span>
         </motion.div>
 
-        {/* Profile photo with subtle gradient aura */}
+        {/* Profile Avatar — Sleek concentric design */}
         <div className="relative group select-none">
-          <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-tr from-violet-600 via-fuchsia-500 to-rose-400 shadow-xl group-hover:scale-105 transition-transform duration-300">
-            <div className="w-full h-full rounded-full overflow-hidden bg-slate-900 border-2 border-white dark:border-slate-900">
+          <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 ring-1 ring-zinc-200 dark:ring-zinc-800 bg-white dark:bg-zinc-900 shadow-xl group-hover:scale-105 transition-all duration-300">
+            <div className="w-full h-full rounded-full overflow-hidden border border-zinc-200/80 dark:border-zinc-700/80">
               <Image
                 src="/me-min.jpeg"
                 alt="Omkar Shetake"
@@ -97,91 +94,97 @@ export default function Hero() {
               />
             </div>
           </div>
-          {/* Micro Stack Badge */}
-          <span className="absolute -bottom-1 -right-2 px-2.5 py-0.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[11px] font-mono font-medium shadow-md flex items-center gap-1.5 text-slate-800 dark:text-slate-200">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            ☕ Java 21 · Spring Boot 3
+          {/* Micro Status Chip */}
+          <span className="absolute -bottom-1 -right-2 px-2.5 py-0.5 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[11px] font-mono font-medium shadow-md flex items-center gap-1.5 text-zinc-700 dark:text-zinc-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+            Java 21 · Spring Boot
           </span>
         </div>
 
         {/* Headline & Rotating Role */}
-        <div className="space-y-3 max-w-2xl">
-          <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-violet-600 dark:text-violet-400">
-            Hello, I&apos;m
+        <div className="space-y-3.5 max-w-2xl">
+          <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-violet-600 dark:text-violet-400 font-semibold">
+            Software Engineer · Backend Systems
           </p>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
             Omkar Shetake
           </h1>
 
-          {/* Rotating Role with AnimatePresence */}
-          <div className="h-9 sm:h-11 flex items-center justify-center overflow-hidden">
+          {/* Rotating Role with clean typography */}
+          <div className="h-8 sm:h-10 flex items-center justify-center overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.p
                 key={roleIndex}
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -14 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 dark:from-violet-400 dark:via-fuchsia-300 dark:to-rose-300 bg-clip-text text-transparent"
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.28, ease: "easeOut" }}
+                className="text-lg sm:text-2xl font-bold text-zinc-800 dark:text-zinc-200 flex items-center gap-2"
               >
-                {ROLES[roleIndex]}
+                <Sparkles size={18} className="text-violet-500" />
+                <span>{ROLES[roleIndex]}</span>
               </motion.p>
             </AnimatePresence>
           </div>
 
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl mx-auto">
-            B.Tech CSE student building production-grade, AI-integrated backend systems with Spring Boot, event-driven Kafka messaging, and PostgreSQL.
+          <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl mx-auto">
+            Final-year B.Tech CSE student (8.3 CGPA) architecting high-throughput, event-driven backends with Java 21, Spring Boot 3, Apache Kafka KRaft, and PostgreSQL.
           </p>
 
-          {/* Tech Stack Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
-            {TECH.map((item) => (
+          {/* Tech Stack Chips — Monospace & Clean */}
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+            {TECH_STACK.map((tech) => (
               <span
-                key={item}
-                className="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60 font-medium"
+                key={tech.label}
+                className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-900/90 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-800 transition-colors"
               >
-                {item}
+                <span className="w-1 h-1 rounded-full bg-violet-500" />
+                <span>{tech.label}</span>
               </span>
             ))}
           </div>
         </div>
 
-        {/* Recruiter-Focused Primary CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-2">
+        {/* High-Contrast Senior CTAs */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mt-1">
+          {/* Primary Action — Stripe/Vercel standard */}
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm transition-all shadow-md hover:shadow-violet-500/25 active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-white font-semibold text-sm transition-all shadow-sm active:scale-95"
           >
-            <span>View Projects</span>
-            <ArrowRight size={16} />
+            <span>View Architecture</span>
+            <ArrowRight size={15} />
           </a>
+
+          {/* Secondary Action */}
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold text-sm transition-all shadow-md active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 font-semibold text-sm transition-all shadow-xs active:scale-95"
           >
-            <FileText size={16} />
+            <FileText size={15} />
             <span>Download Resume</span>
           </a>
+
+          {/* Tertiary Action */}
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-violet-500 dark:hover:border-violet-400 text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 font-semibold text-sm transition-all active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/80 dark:hover:bg-zinc-850 font-semibold text-sm transition-all active:scale-95"
           >
-            <Mail size={16} />
-            <span>Contact Me</span>
+            <span>Send Message</span>
           </a>
         </div>
 
-        {/* Quick Social Links Bar */}
-        <div className="flex items-center gap-3 pt-2 text-slate-500 dark:text-slate-400">
-          <span className="text-xs font-medium mr-1">Connect:</span>
+        {/* Clean Profiles Bar */}
+        <div className="flex items-center gap-3 pt-1 text-zinc-500 dark:text-zinc-400">
+          <span className="text-xs font-mono mr-0.5">Profiles:</span>
           <a
             href="https://github.com/OmkarShetake"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="p-2 rounded-lg hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+            className="p-2 rounded-lg hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
           >
             <GithubIcon />
           </a>
@@ -190,16 +193,9 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="p-2 rounded-lg hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
+            className="p-2 rounded-lg hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
           >
             <LinkedinIcon />
-          </a>
-          <a
-            href="mailto:omkarshetake4655@gmail.com"
-            aria-label="Send Email"
-            className="p-2 rounded-lg hover:text-violet-600 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors"
-          >
-            <Mail size={18} />
           </a>
         </div>
       </motion.div>
@@ -210,10 +206,10 @@ export default function Hero() {
         aria-label="Scroll to About"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="mt-12 text-slate-400 dark:text-slate-600 hover:text-violet-500 transition-colors"
+        transition={{ delay: 1, duration: 0.5 }}
+        className="mt-12 text-zinc-400 dark:text-zinc-600 hover:text-violet-500 transition-colors"
       >
-        <ArrowDown size={20} className="animate-bounce" />
+        <ArrowDown size={18} className="animate-bounce" />
       </motion.a>
     </section>
   );
