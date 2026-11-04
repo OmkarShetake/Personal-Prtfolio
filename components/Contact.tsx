@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Send, Check, Copy, MapPin, Briefcase, Sparkles } from "lucide-react";
+import { Mail, Send, Check, Copy, MapPin, Briefcase, Sparkles, AlertCircle } from "lucide-react";
 
 // Brand SVG icons
 const GithubIcon = () => (
@@ -18,6 +18,11 @@ const LinkedinIcon = () => (
 );
 
 const EMAIL_ADDRESS = "omkarshetake4655@gmail.com";
+
+// ─── Web3Forms access key ───────────────────────────────────────────────────
+// Get your FREE key (takes 30 seconds) at https://web3forms.com
+// Enter your Gmail → they email you the key → paste it below.
+const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 const SOCIAL_LINKS = [
   {
@@ -49,11 +54,7 @@ type FormState = {
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
-  const [form, setForm] = useState<FormState>({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [form, setForm] = useState<FormState>({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [copied, setCopied] = useState(false);
 
@@ -74,27 +75,65 @@ export default function Contact() {
     if (!form.name || !form.email || !form.message) return;
 
     setStatus("sending");
-    
-    // Create mailto fallback link for seamless message delivery
+
+    // ── Option 1: Web3Forms (real email delivery — preferred) ────────────────
+    // Works when WEB3FORMS_KEY is set to your actual key from web3forms.com
+    if (WEB3FORMS_KEY !== "YOUR_ACCESS_KEY_HERE") {
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: `Portfolio Inquiry from ${form.name}`,
+            name: form.name,
+            email: form.email,
+            message: form.message,
+            from_name: "Portfolio Contact Form",
+          }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          setStatus("success");
+          setForm({ name: "", email: "", message: "" });
+          setTimeout(() => setStatus("idle"), 6000);
+          return;
+        }
+      } catch {
+        // fall through to mailto fallback below
+      }
+    }
+
+    // ── Option 2: mailto fallback (opens email client) ───────────────────────
+    // Reliable cross-browser approach using window.open
     const mailtoUrl = `mailto:${EMAIL_ADDRESS}?subject=${encodeURIComponent(
       `Portfolio Inquiry from ${form.name}`
     )}&body=${encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
     )}`;
 
-    // Simulate async submission
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    // window.open is more reliable than location.href for mailto links
+    const opened = window.open(mailtoUrl, "_self");
+
+    if (!opened && typeof document !== "undefined") {
+      // Some browsers block window.open — create a hidden anchor and click it
+      const a = document.createElement("a");
+      a.href = mailtoUrl;
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
 
     setStatus("success");
-    // Open default mail client with prefilled fields
-    window.location.href = mailtoUrl;
-
     setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setStatus("idle"), 5000);
+    setTimeout(() => setStatus("idle"), 6000);
   };
 
+  const keyNotSet = WEB3FORMS_KEY === "YOUR_ACCESS_KEY_HERE";
+
   return (
-    <section id="contact" className="py-24 px-4 bg-slate-50/50 dark:bg-slate-900/40">
+    <section id="contact" className="py-24 px-4 bg-slate-50/50 dark:bg-zinc-900/40">
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -115,7 +154,7 @@ export default function Contact() {
           </p>
 
           {/* Quick Copy Email Action Pill */}
-          <div className="mt-5 inline-flex items-center gap-2 p-1.5 pl-3.5 pr-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+          <div className="mt-5 inline-flex items-center gap-2 p-1.5 pl-3.5 pr-2 rounded-full bg-white dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 shadow-xs">
             <span className="text-xs font-mono text-slate-700 dark:text-slate-300">
               {EMAIL_ADDRESS}
             </span>
@@ -146,14 +185,35 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="md:col-span-7 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs"
+            className="md:col-span-7 p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-800/80 border border-slate-200/80 dark:border-zinc-700/80 shadow-xs"
           >
             <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
               Send a Message
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
-              Fill out the form below to initiate an email directly to my inbox.
+              {keyNotSet
+                ? "Will open your email client with the message pre-filled."
+                : "Message goes straight to my inbox — I reply within 24 hours."}
             </p>
+
+            {/* Web3Forms setup notice — only shown when key not configured */}
+            {keyNotSet && (
+              <div className="mb-5 flex items-start gap-2.5 p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-700 dark:text-amber-300">
+                <AlertCircle size={15} className="shrink-0 mt-0.5" />
+                <span>
+                  <strong>Developer note:</strong> For direct inbox delivery, get a free API key at{" "}
+                  <a
+                    href="https://web3forms.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline font-semibold"
+                  >
+                    web3forms.com
+                  </a>{" "}
+                  and replace <code className="bg-amber-100 dark:bg-amber-900/60 px-1 rounded">YOUR_ACCESS_KEY_HERE</code> in <code className="bg-amber-100 dark:bg-amber-900/60 px-1 rounded">Contact.tsx</code>.
+                </span>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
               <div>
@@ -171,7 +231,7 @@ export default function Contact() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="e.g. Satya Nadella"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
                 />
               </div>
 
@@ -190,7 +250,7 @@ export default function Contact() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="e.g. recruiter@company.com"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition"
                 />
               </div>
 
@@ -209,32 +269,54 @@ export default function Contact() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Tell me about your team, role requirements, or project..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition resize-none"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-zinc-700 bg-slate-50/50 dark:bg-zinc-900/60 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 transition resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 disabled:opacity-60 text-white font-semibold text-xs sm:text-sm transition-all shadow-xs hover:shadow-violet-500/25 active:scale-95 mt-1"
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold text-xs sm:text-sm transition-all shadow-xs hover:shadow-violet-500/25 active:scale-95 mt-1"
               >
                 {status === "sending" ? (
                   <>
                     <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    <span>Preparing email…</span>
+                    <span>Sending…</span>
                   </>
                 ) : (
                   <>
                     <Send size={15} />
-                    <span>Send Message via Email</span>
+                    <span>Send Message</span>
                   </>
                 )}
               </button>
 
-              {/* Success / error feedback */}
+              {/* Success feedback */}
               {status === "success" && (
-                <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-center text-xs text-emerald-700 dark:text-emerald-300 font-medium">
-                  Opening your default email composer with your message details. You can also reach out directly to {EMAIL_ADDRESS}.
+                <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-xs text-emerald-700 dark:text-emerald-300 font-medium">
+                  <Check size={15} className="shrink-0 mt-0.5 text-emerald-500" />
+                  <span>
+                    {keyNotSet
+                      ? "Your email client should now be open with the message pre-filled. You can also email me directly at "
+                      : "Message sent! I'll reply to "}
+                    <a href={`mailto:${EMAIL_ADDRESS}`} className="underline font-semibold">
+                      {EMAIL_ADDRESS}
+                    </a>
+                    {keyNotSet ? "." : " within 24 hours."}
+                  </span>
+                </div>
+              )}
+
+              {/* Error feedback */}
+              {status === "error" && (
+                <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-xs text-rose-700 dark:text-rose-300 font-medium">
+                  <AlertCircle size={15} className="shrink-0 mt-0.5" />
+                  <span>
+                    Something went wrong. Please email me directly at{" "}
+                    <a href={`mailto:${EMAIL_ADDRESS}`} className="underline font-semibold">
+                      {EMAIL_ADDRESS}
+                    </a>
+                  </span>
                 </div>
               )}
             </form>
@@ -249,7 +331,7 @@ export default function Contact() {
             className="md:col-span-5 flex flex-col gap-4"
           >
             {/* Location & Relocation Card */}
-            <div className="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs space-y-3">
+            <div className="p-5 rounded-2xl bg-white dark:bg-zinc-800/80 border border-slate-200/80 dark:border-zinc-700/80 shadow-xs space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-violet-600 dark:text-violet-400 flex items-center gap-1.5">
                 <Sparkles size={14} />
                 <span>Placement Snapshot</span>
@@ -275,7 +357,7 @@ export default function Contact() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs hover:border-violet-400 dark:hover:border-violet-500 hover:shadow-md transition-all group"
+                className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-zinc-800/80 border border-slate-200/80 dark:border-zinc-700/80 shadow-xs hover:border-violet-400 dark:hover:border-violet-500 hover:shadow-md transition-all group"
               >
                 <div className="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-950/60 flex items-center justify-center text-violet-600 dark:text-violet-400 group-hover:scale-105 transition-transform">
                   <social.icon />
