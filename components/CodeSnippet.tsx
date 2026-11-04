@@ -49,38 +49,6 @@ public class BookingEventProducer {
 }`,
   },
   {
-    id: "vector",
-    filename: "MedicineVectorSearch.java",
-    badge: "pgvector · Spring AI",
-    project: "MedChain Architecture",
-    description: "Semantic vector retrieval directly inside PostgreSQL without running external vector DB overhead.",
-    highlight: "Combines 1536-dim embeddings with HNSW indexing for sub-second retrieval.",
-    code: `@Service
-@RequiredArgsConstructor
-public class MedicineVectorSearchService {
-
-    private final VectorStore vectorStore;
-    private final MedicineRepository medicineRepo;
-
-    public List<MedicineMatchResponse> searchSemanticAlternatives(String userQuery) {
-        SearchRequest request = SearchRequest.query(userQuery)
-                .withTopK(5)
-                .withSimilarityThreshold(0.78);
-
-        List<Document> similarDocuments = vectorStore.similaritySearch(request);
-
-        return similarDocuments.stream()
-                .map(doc -> {
-                    Long medicineId = Long.parseLong(doc.getMetadata().get("id").toString());
-                    Double score = (Double) doc.getMetadata().get("distance");
-                    Medicine medicine = medicineRepo.findByIdOrThrow(medicineId);
-                    return MedicineMatchResponse.from(medicine, score);
-                })
-                .toList();
-    }
-}`,
-  },
-  {
     id: "security",
     filename: "SecurityConfig.java",
     badge: "Spring Security 6 · JWT RBAC",

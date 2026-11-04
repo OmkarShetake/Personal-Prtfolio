@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { Layers, GraduationCap, CheckCircle, Server, Award } from "lucide-react";
 
 const STATS = [
-  { value: 2,    suffix: "",  label: "Production Projects", sublabel: "Full-Stack & Event-Driven", icon: Layers },
+  { value: 1,    suffix: "",  label: "Production Project",  sublabel: "Full-Stack & Event-Driven", icon: Layers },
   { value: 8.3,  suffix: "",  label: "B.Tech CGPA",         sublabel: "DYPCET Kolhapur",          decimal: true, icon: GraduationCap },
   { value: 19,   suffix: "+", label: "Unit Tests Written",  sublabel: "JUnit 5 + Mockito",       icon: CheckCircle },
-  { value: 38,   suffix: "",  label: "REST Endpoints",      sublabel: "Swagger / OpenAPI",        icon: Server },
+  { value: 5,    suffix: "+", label: "Kafka Topics",        sublabel: "Async Event Pipeline",     icon: Server },
   { value: 4,    suffix: "+", label: "Certifications",      sublabel: "AWS & Google Cloud",       icon: Award },
 ];
 

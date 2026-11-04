@@ -18,10 +18,9 @@ const TABS = [
           passionate about building production-grade, AI-integrated backend systems.
         </p>
         <p>
-          I&apos;ve shipped two full-stack projects —{" "}
-          <span className="font-semibold text-slate-800 dark:text-slate-200">StayFinder</span> and{" "}
-          <span className="font-semibold text-slate-800 dark:text-slate-200">MedChain</span> — both integrating
-          Google Gemini AI, Apache Kafka, WebSockets, Docker, and PostgreSQL.
+          I&apos;ve shipped a production-grade full-stack project &mdash;{" "}
+          <span className="font-semibold text-slate-800 dark:text-slate-200">StayFinder</span> &mdash; integrating
+          Google Gemini AI, Apache Kafka, WebSockets, Docker, and PostgreSQL into a scalable event-driven system.
         </p>
         <p>
           I&apos;m actively seeking a{" "}
@@ -41,7 +40,7 @@ const TABS = [
           { icon: MapPin,        text: "Kolhapur, Maharashtra, India" },
           { icon: Layers,        text: "Speciality: Backend · AI Integration · Event-Driven Systems" },
           { icon: Coffee,        text: "Stack: Java · Spring Boot · Kafka · Gemini AI · PostgreSQL" },
-          { icon: Rocket,        text: "19 unit tests written · 38 REST endpoints shipped" },
+          { icon: Rocket,        text: "19 unit tests written · Docker Compose full stack" },
         ].map(({ icon: Icon, text }) => (
           <li key={text} className="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
             <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-indigo-50 dark:bg-indigo-950/70 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
@@ -101,7 +100,7 @@ const STRENGTHS = [
   {
     icon: Rocket,
     title: "Ship & Learn Fast",
-    description: "Two solo full-stack projects applying OOP, SOLID, design patterns.",
+    description: "A solo production-grade full-stack project applying OOP, SOLID, design patterns.",
     bullets: ["Rigorous JUnit 5 testing", "SOLID & OOP principles", "Rapid full-stack execution"],
     color: "from-pink-500 to-rose-500",
     bg: "bg-pink-50/70 dark:bg-pink-950/30",

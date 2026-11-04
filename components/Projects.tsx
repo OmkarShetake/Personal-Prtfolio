@@ -44,37 +44,6 @@ const PROJECTS = [
     githubUrl: "https://github.com/OmkarShetake/StayFinderProject",
     liveUrl: "",
   },
-  {
-    title: "MedChain",
-    label: "Full-Stack · Multimodal AI · Healthcare",
-    badge: "Semantic Vector Search & Sub-100ms Redis",
-    summary: "AI-powered pharmaceutical authentication and fake medicine detection platform engineered to protect rural India.",
-    architectureFlow: "Mobile QR / Image → Spring Boot 3 → Redis Cache (<100ms) → pgvector & Gemini Flash",
-    decision: {
-      question: "Why pgvector & Redis Hybrid Cache?",
-      answer: "Redis provides sub-100ms barcode verification for high-throughput pharmacy counters, while pgvector handles semantic search directly inside PostgreSQL without external vector DB operational overhead.",
-    },
-    images: [
-      "/projects/Medchain/1782634347804.jpg",
-      "/projects/Medchain/1782634348276.jpg",
-      "/projects/Medchain/1782634349182.jpg",
-    ],
-    metrics: [
-      { label: "API Surface", value: "38 REST Endpoints" },
-      { label: "Verification Latency", value: "<100ms (Redis Cache)" },
-      { label: "Vector Search", value: "pgvector Embeddings" },
-    ],
-    highlights: [
-      "Gemini 2.5 Flash multimodal vision engine for medicine packaging inspection, symptom checking & drug interaction alerts",
-      "pgvector vector similarity search for natural language medicine and generic alternative discovery",
-      "Cryptographic ZXing QR generation backed by Redis caching for high-throughput sub-100ms barcode verification",
-      "Multi-role JWT RBAC security separating Admin, Manufacturer, Chemist, and Patient domains",
-      "38 clean REST endpoints documented via Swagger/OpenAPI with WebSocket-driven batch recall alerts",
-    ],
-    tags: ["Java 21", "Spring Boot 3", "Spring AI", "Gemini 2.5 Flash", "pgvector", "Redis", "ZXing", "Docker Compose"],
-    githubUrl: "https://github.com/OmkarShetake/Medchain",
-    liveUrl: "",
-  },
 ];
 
 // ── Lightbox ──────────────────────────────────────────────────────────────────
