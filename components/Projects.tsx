@@ -75,7 +75,7 @@ const PROJECTS = [
     ],
     tags: ["Java 21", "Spring Boot 3", "Gemini AI", "Kafka KRaft", "PostgreSQL", "WebSocket", "Cloudinary", "Docker Compose"],
     githubUrl: "https://github.com/OmkarShetake/StayFinderProject",
-    liveUrl: "",
+    liveUrl: "https://stay-finder-project-mocha.vercel.app/",
   },
 ];
 
