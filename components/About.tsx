@@ -18,9 +18,9 @@ const TABS = [
           focused on building production-grade, AI-integrated backend systems.
         </p>
         <p>
-          I&apos;ve shipped a production-grade full-stack project &mdash;{" "}
-          <span className="font-semibold text-zinc-900 dark:text-zinc-100">StayFinder</span> &mdash; integrating
-          Google Gemini AI, Apache Kafka (KRaft), WebSockets, Docker, and PostgreSQL into a scalable event-driven system.
+          I&apos;ve architected and shipped two production-grade full-stack platforms &mdash;{" "}
+          <span className="font-semibold text-zinc-900 dark:text-zinc-100">StayFinder</span> (event-driven rental platform with Kafka KRaft) and{" "}
+          <span className="font-semibold text-zinc-900 dark:text-zinc-100">Vetra</span> (evidence-based career intelligence platform with Spring Boot 3.3 &amp; Gemini 2.5 Flash) &mdash; both backed by Docker containerization and PostgreSQL.
         </p>
         <p>
           I&apos;m actively seeking a{" "}
@@ -92,7 +92,7 @@ const STRENGTHS = [
   {
     icon: Rocket,
     title: "Engineering Rigor & Quality",
-    description: "Applying OOP, SOLID principles, clean architecture patterns, and comprehensive JUnit 5 + Mockito unit tests.",
+    description: "Two production-grade full-stack platforms applying OOP, clean domain boundaries, SOLID principles, and comprehensive tests.",
     bullets: ["Rigorous unit testing (JUnit 5)", "SOLID & design patterns", "Production code quality"],
   },
 ];

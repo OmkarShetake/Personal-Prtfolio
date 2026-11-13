@@ -13,6 +13,39 @@ const GithubIcon = () => (
 
 const PROJECTS = [
   {
+    title: "Vetra",
+    label: "Full-Stack · Career Intelligence · AI",
+    badge: "Interactive DAG & Gemini 2.5 Flash",
+    summary: "Evidence-based career intelligence platform bridging authentic job market demand with verifiable candidate engineering proof through dynamic dependency graphs and generative AI.",
+    architectureFlow: "React 18 & Canvas DAG → Spring Boot 3.3 Gateway → Gemini 2.5 Flash & PDFBox → PostgreSQL 16 & Docker",
+    decision: {
+      question: "Why Topological Skill DAG & Gemini 2.5 Flash?",
+      answer: "A 5-layer Directed Acyclic Graph (DAG) guarantees strict prerequisite sequencing for career roadmaps without circular dependencies, while Gemini 2.5 Flash transforms passive bullet points into verifiable STAR metrics without fabricating work history.",
+    },
+    images: [
+      "/projects/Vetra/overview.png",
+      "/projects/Vetra/skill-explorer-dag.png",
+      "/projects/Vetra/resume-studio.png",
+      "/projects/Vetra/job-intelligence.png",
+      "/projects/Vetra/technical-skills.png",
+    ],
+    metrics: [
+      { label: "Backend Core", value: "Spring Boot 3.3 + Java 21" },
+      { label: "Generative AI", value: "Google Gemini 2.5 Flash" },
+      { label: "Graph Engine", value: "5-Tier Dynamic DAG" },
+    ],
+    highlights: [
+      "Universal Dynamic Skill Explorer mapping 5-tier topological Directed Acyclic Graphs (DAGs) for standard and custom engineering tracks",
+      "Live Gemini 2.5 Flash AI Resume Studio converting passive bullets into high-impact Action + Architecture + Outcome statements",
+      "Server-side PDF resume parsing via Apache PDFBox 3 with tokenization and ATS alignment scoring (90/100 benchmark)",
+      "Evidence-grounded skill gap analysis segregating Demonstrated vs. Critical Gaps across Product Base, Startup, and Enterprise archetypes",
+      "Modular monolith architecture containerized with Docker, automated Flyway schema migrations (V1–V4), and Neon PostgreSQL 16",
+    ],
+    tags: ["Java 21", "Spring Boot 3.3", "React 18", "TypeScript 5", "Google Gemini AI", "PostgreSQL 16", "Docker", "Apache PDFBox", "Flyway"],
+    githubUrl: "https://github.com/OmkarShetake/Vetra",
+    liveUrl: "https://vetra-indol.vercel.app/",
+  },
+  {
     title: "StayFinder",
     label: "Full-Stack · Event-Driven · AI",
     badge: "Production Distributed Architecture",
