@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Layers, GraduationCap, CheckCircle, Server, Award } from "lucide-react";
 
 const STATS = [
-  { value: 2,    suffix: "",  label: "Production Projects", sublabel: "Full-Stack Distributed", icon: Layers },
+  { value: 3,    suffix: "",  label: "Production Projects", sublabel: "Full-Stack Distributed", icon: Layers },
   { value: 8.3,  suffix: "",  label: "B.Tech CGPA",         sublabel: "DYPCET Kolhapur",        decimal: true, icon: GraduationCap },
   { value: 19,   suffix: "+", label: "Unit Tests Written",  sublabel: "JUnit 5 + Mockito",     icon: CheckCircle },
   { value: 5,    suffix: "+", label: "Kafka Topics",        sublabel: "Async Event Pipeline",   icon: Server },
