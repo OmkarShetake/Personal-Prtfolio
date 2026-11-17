@@ -45,37 +45,6 @@ const PROJECTS = [
     liveUrl: "",
   },
   {
-    title: "MedChain",
-    label: "Full-Stack · AI · Healthcare",
-    badge: "Multimodal AI + pgvector",
-    summary: "AI-powered fake medicine detection platform protecting rural India from counterfeit drugs.",
-    architectureFlow: "React Frontend → Spring Boot 3 → Gemini 2.5 Flash → pgvector PostgreSQL & Redis",
-    decision: {
-      question: "Why pgvector Semantic Search?",
-      answer: "Vector embeddings allow patients and chemists to query medicines using natural language instead of exact names — critical for rural users who may only know symptom descriptions or partial brand names.",
-    },
-    images: [
-      "/projects/Medchain/1782634347804.jpg",
-      "/projects/Medchain/1782634348276.jpg",
-      "/projects/Medchain/1782634349182.jpg",
-    ],
-    metrics: [
-      { label: "AI Model", value: "Gemini 2.5 Flash (Multimodal)" },
-      { label: "Cache", value: "Redis sub-100ms" },
-      { label: "REST Endpoints", value: "38 via Swagger" },
-    ],
-    highlights: [
-      "Gemini 2.5 Flash (multimodal) — image scan, symptom check, drug interaction analysis",
-      "pgvector semantic search enabling natural language medicine queries in PostgreSQL",
-      "ZXing QR generation & Redis 7 caching for sub-100ms verification responses",
-      "Multi-role JWT RBAC (Admin / Manufacturer / Patient / Chemist) with email verification",
-      "Real-time WebSocket recall alerts · 38 REST endpoints documented via Swagger/OpenAPI",
-    ],
-    tags: ["Java 21", "Spring Boot 3", "Spring AI", "Gemini 2.5 Flash", "pgvector", "Redis", "ZXing", "Docker"],
-    githubUrl: "https://github.com/OmkarShetake/Medchain",
-    liveUrl: "",
-  },
-  {
     title: "RootCauseX",
     label: "Full-Stack · AI · Developer Tooling",
     badge: "Live Demo Available",
@@ -86,10 +55,10 @@ const PROJECTS = [
       answer: "Redis cache eliminates redundant LLM calls for already-seen issues. pgvector catches near-duplicate issues at ≥88% similarity before they reach the LLM. Only genuinely novel issues consume expensive AI inference — cutting costs and latency dramatically.",
     },
     images: [
-      "/projects/RootCauseX/1.jpg",
-      "/projects/RootCauseX/2.jpg",
-      "/projects/RootCauseX/3.jpg",
-      "/projects/RootCauseX/4.jpg",
+      "/projects/RootCauseX/Screenshot 2026-11-17 134100.png",
+      "/projects/RootCauseX/Screenshot 2026-11-17 134116.png",
+      "/projects/RootCauseX/Screenshot 2026-11-17 134133.png",
+      "/projects/RootCauseX/Screenshot 2026-11-17 134146.png",
     ],
     metrics: [
       { label: "Virtual Threads", value: "Java 21 (non-blocking)" },
